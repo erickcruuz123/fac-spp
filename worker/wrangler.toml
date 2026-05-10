@@ -1,0 +1,16 @@
+name = "fac-spp-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Variáveis públicas (não sensíveis)
+[vars]
+SUPABASE_URL = "https://epwetlpudffpwqvxxfiu.supabase.co"
+WAHA_SESSION = "fac-spp"
+FRONTEND_URL = "https://fac-spp.pages.dev"
+
+# Segredos — definidos via: wrangler secret put NOME
+# SUPABASE_SERVICE_ROLE_KEY
+# ADMIN_PASSWORD
+# WAHA_URL
+# WAHA_WEBHOOK_SECRET

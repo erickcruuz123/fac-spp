@@ -1,0 +1,141 @@
+---
+// src/pages/index.astro — Página inicial
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acampamento São Padre Pio — Fichas Digitais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* Variáveis e reset */
+    :root {
+      --navy: #1a3a5c;
+      --navy-mid: #2b5080;
+      --gold: #c9a84c;
+      --gold-light: #e8c87a;
+      --dark-bg: #080e1c;
+      --dark-surface: #0a1221;
+      --cream: #f0f5fa;
+      --text: #0d1f35;
+      --muted: #4a6a85;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; background: var(--dark-bg); color: var(--white); min-height: 100vh; }
+
+    /* Topbar */
+    .topbar {
+      background: var(--dark-bg);
+      padding: 8px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid rgba(74,122,170,.15);
+    }
+    .topbar-logo { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+    .topbar-title { font-size: .82rem; font-weight: 700; color: #fff; }
+    .topbar-sub { font-size: .68rem; color: rgba(255,255,255,.38); display: block; margin-top: 1px; }
+
+    /* Nav */
+    .sidenav {
+      background: var(--dark-surface);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+    }
+    .sidenav-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 13px 20px;
+      cursor: pointer;
+      font-size: .8rem; font-weight: 700;
+      color: rgba(255,255,255,.45);
+      border-bottom: 3px solid transparent;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .sidenav-item:hover { color: rgba(255,255,255,.85); }
+    .sidenav-item.active { color: #fff; border-bottom-color: var(--gold); }
+    .sidenav-sep { width: 1px; height: 20px; background: rgba(74,122,170,.2); margin: 0 2px; }
+
+    /* Rainbow bar */
+    .rainbow-bar {
+      height: 4px;
+      background: linear-gradient(90deg,#e63946 0%,#f4722b 16%,#f9c74f 32%,#90be6d 48%,#4cc9f0 64%,#4361ee 80%,#7209b7 100%);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(160deg, var(--dark-bg) 0%, var(--dark-surface) 100%);
+      padding: 40px 60px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      min-height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 75% 50%, rgba(40,60,120,.5) 0%, transparent 65%);
+    }
+    .logo-wrap {
+      position: relative; flex-shrink: 0;
+      width: 120px; height: 120px; z-index: 1;
+    }
+    .logo-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+    .hero-text { position: relative; z-index: 1; }
+    .eyebrow { font-size: .68rem; color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+    .hero-text h1 { font-family: 'Lato', sans-serif; font-size: 2.2rem; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 10px; }
+    .hero-text h1 span { color: var(--gold); display: block; }
+    .hero-text p { font-size: .9rem; color: rgba(255,255,255,.48); margin-bottom: 22px; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #d4a017, #f0c040);
+      color: var(--dark-bg);
+      padding: 13px 26px; border-radius: 8px;
+      font-weight: 700; font-size: .88rem;
+      cursor: pointer; border: none;
+      font-family: 'Lato', sans-serif;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <img src="/logo.png" class="topbar-logo" alt="Logo"/>
+    <div>
+      <span class="topbar-title">Acampamento São Padre Pio</span>
+      <span class="topbar-sub">Fichas Digitais de Inscrição</span>
+    </div>
+  </div>
+
+  <!-- Navegação -->
+  <nav class="sidenav">
+    <a class="sidenav-item active" href="/">📋 Preencher Ficha</a>
+    <div class="sidenav-sep"></div>
+    <a class="sidenav-item" href="/consultar">🔍 Consultar Ficha</a>
+    <div class="sidenav-sep"></div>
+    <a class="sidenav-item" href="/admin">🔐 Administração</a>
+  </nav>
+  <div class="rainbow-bar"></div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="logo-wrap">
+      <img src="/logo.png" alt="Logo Acampamento São Padre Pio"/>
+    </div>
+    <div class="hero-text">
+      <div class="eyebrow">✦ Fichas Digitais de Inscrição</div>
+      <h1>Preencha sua<span>ficha de inscrição</span></h1>
+      <p>Acesse com o número e a contra-senha recebidos pelo seu núcleo.</p>
+      <a class="cta-btn" href="/preencher">📋 Preencher Minha Ficha</a>
+    </div>
+  </header>
+</body>
+</html>
